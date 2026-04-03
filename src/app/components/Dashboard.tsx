@@ -10,7 +10,10 @@ export function Dashboard() {
 
   const fetchStats = () => {
     const workerId = localStorage.getItem('workerId') || '11111111-1111-1111-1111-111111111111';
-    fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/engine/stats/${workerId}`)
+    const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+    console.log("📊 [DEBUG] Fetching Stats from:", apiUrl);
+    
+    fetch(`${apiUrl}/api/engine/stats/${workerId}`)
       .then(res => res.json())
       .then(d => {
         // Process 7-day trend from recentPayouts
