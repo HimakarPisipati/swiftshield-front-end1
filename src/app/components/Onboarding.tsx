@@ -43,8 +43,10 @@ export function Onboarding() {
   const handleSendOtp = async () => {
     setLoading(true);
     setError("");
+    const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+    console.log("📨 [DEBUG] Sending OTP using URL:", apiUrl);
     try {
-      const response = await fetch('/api/worker/send-otp', {
+      const response = await fetch(`${apiUrl}/api/worker/send-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: formData.email, purpose: 'registration' })
@@ -85,8 +87,10 @@ export function Onboarding() {
     } else {
       setLoading(true);
       setError("");
+      const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+      console.log("📝 [DEBUG] Registering using URL:", apiUrl);
       try {
-        const response = await fetch('/api/worker/register', {
+        const response = await fetch(`${apiUrl}/api/worker/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

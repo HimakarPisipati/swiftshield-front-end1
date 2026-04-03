@@ -8,7 +8,6 @@ import { RiskInsights } from "./components/RiskInsights";
 import { FraudDetection } from "./components/FraudDetection";
 import { Onboarding } from "./components/Onboarding";
 import { SubmitClaim } from "./components/SubmitClaim";
-import { Register } from "./components/Register";
 import { Login } from "./components/Login";
 
 import { Settings } from "./components/Settings";
@@ -21,7 +20,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: LandingPage },
       { path: "login", Component: Login },
-      { path: "register", Component: Register },
+      { path: "register", Component: Onboarding },
       { path: "dashboard", Component: Dashboard },
       { path: "pricing", Component: Pricing },
       { path: "claims", Component: Claims },
