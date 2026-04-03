@@ -6,7 +6,9 @@ export function Pricing() {
 
   useEffect(() => {
     const workerId = localStorage.getItem('workerId') || '11111111-1111-1111-1111-111111111111';
-    fetch(`/api/engine/stats/${workerId}`)
+    const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+    
+    fetch(`${apiUrl}/api/engine/stats/${workerId}`)
       .then(res => res.json())
       .then(data => {
         if (data && data.activePlan) {
