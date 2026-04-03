@@ -74,8 +74,11 @@ export function SubmitClaim() {
   const handleSubmit = async () => {
     setSubmitting(true);
     setError(null);
+    const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+    console.log("📝 [DEBUG] Submitting Claim using URL:", apiUrl);
+    
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/engine/trigger`, {
+      const res = await fetch(`${apiUrl}/api/engine/claim`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
