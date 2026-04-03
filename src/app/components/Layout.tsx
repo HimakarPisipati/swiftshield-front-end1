@@ -20,7 +20,8 @@ export function Layout() {
   useEffect(() => {
     const workerId = localStorage.getItem('workerId');
     if (workerId && !isLanding && !user) {
-      fetch(`/api/worker/profile/${workerId}`)
+      const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+      fetch(`${apiUrl}/api/worker/profile/${workerId}`)
         .then(res => res.json())
         .then(data => {
           if (data.success) {
@@ -33,6 +34,14 @@ export function Layout() {
         .catch(err => console.error("Error fetching user profile:", err));
     }
   }, [location.pathname, isLanding, user]);
+
+  // Handle click outside to close profile dropdown
+  useEffect(() => {
+    if (!showProfile) return;
+    const handleClickOutside = () => setShowProfile(false);
+    window.addEventListener('click', handleClickOutside);
+    return () => window.removeEventListener('click', handleClickOutside);
+  }, [showProfile]);
 
   const navItems = [
     { path: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
@@ -65,15 +74,19 @@ export function Layout() {
                 
                 <div 
                   className="relative"
-                  onMouseEnter={() => setShowProfile(true)}
-                  onMouseLeave={() => setShowProfile(false)}
+                  onClick={(e) => e.stopPropagation()} // Prevent auto-close when clicking inside
                 >
-                  <button className="flex items-center gap-2 p-1.5 pr-3 hover:bg-gray-50 rounded-2xl transition-all border border-transparent hover:border-gray-100 group">
+                  <button 
+                    onClick={() => setShowProfile(!showProfile)}
+                    className="flex items-center gap-2 p-1.5 pr-3 hover:bg-gray-50 rounded-2xl transition-all border border-transparent hover:border-gray-100 group"
+                  >
                     <div className="w-9 h-9 bg-gradient-to-br from-[#1E3A8A] to-[#14B8A6] rounded-xl flex items-center justify-center shadow-sm group-hover:shadow transition-all">
                       <User className="w-5 h-5 text-white" />
                     </div>
                     <div className="hidden md:block text-left">
-                      <p className="text-sm font-semibold text-gray-900 leading-none mb-0.5">Profile</p>
+                      <p className="text-sm font-semibold text-gray-900 leading-none mb-0.5">
+                        {user?.name || "Profile"}
+                      </p>
                       <p className="text-[10px] text-gray-500 leading-none">Registered Account</p>
                     </div>
                   </button>
