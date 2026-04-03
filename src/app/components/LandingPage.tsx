@@ -80,7 +80,9 @@ export function LandingPage() {
       <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Shield className="w-8 h-8 text-[#1E3A8A]" />
+            <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center border border-gray-100 bg-white">
+              <img src="/favicon.png" alt="Logo" className="w-7 h-7 object-contain" />
+            </div>
             <span className="text-xl font-semibold text-[#1E3A8A]">SwiftShield</span>
           </div>
 
@@ -129,9 +131,11 @@ export function LandingPage() {
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                 <div className="flex items-center justify-center mb-6">
                   <div className="relative">
-                    <Shield className="w-32 h-32 text-[#14B8A6]" />
-                    <Cloud className="w-12 h-12 text-[#F97316] absolute -top-2 -right-2" />
-                    <MapPin className="w-10 h-10 text-yellow-300 absolute -bottom-2 -left-2" />
+                    <div className="w-32 h-32 bg-white rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden border border-white/50">
+                      <img src="/favicon.png" alt="Logo" className="w-24 h-24 object-contain" />
+                    </div>
+                    <Cloud className="w-12 h-12 text-[#F97316] absolute -top-4 -right-4" />
+                    <MapPin className="w-10 h-10 text-yellow-300 absolute -bottom-4 -left-4" />
                   </div>
                 </div>
                 <div className="space-y-3">
@@ -272,7 +276,9 @@ export function LandingPage() {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <Shield className="w-6 h-6" />
+                <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center overflow-hidden">
+                  <img src="/favicon.png" alt="Logo" className="w-6 h-6 object-contain brightness-0 invert" />
+                </div>
                 <span className="font-semibold text-lg">SwiftShield</span>
               </div>
               <p className="text-blue-200 text-sm">

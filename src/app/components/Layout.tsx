@@ -59,8 +59,8 @@ export function Layout() {
         <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
           <div className="px-6 py-4 flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 bg-[#1E3A8A] rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 shadow-md">
-                <Shield className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 shadow-sm overflow-hidden border border-gray-100">
+                <img src="/favicon.png" alt="SwiftShield Logo" className="w-8 h-8 object-contain" />
               </div>
               <span className="text-xl font-bold text-[#1E3A8A] tracking-tight">SwiftShield</span>
             </Link>
