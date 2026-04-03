@@ -79,7 +79,7 @@ export function Settings() {
     }
 
     try {
-      const response = await fetch(`/api/worker/profile/${workerId}`);
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/worker/profile/${workerId}`);
       const data = await response.json();
       if (data.success) {
         setProfile({
@@ -105,7 +105,7 @@ export function Settings() {
 
     const workerId = localStorage.getItem("workerId");
     try {
-      const response = await fetch(`/api/worker/profile/${workerId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/worker/profile/${workerId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(profile),
@@ -136,7 +136,7 @@ export function Settings() {
 
     const workerId = localStorage.getItem("workerId");
     try {
-      const response = await fetch(`/api/worker/password/${workerId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/worker/password/${workerId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -162,7 +162,7 @@ export function Settings() {
     setFpError(null);
     setFpSuccess(null);
     try {
-      const res = await fetch('/api/worker/send-otp', {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/worker/send-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: profile.email, purpose: 'forgot_password' })
@@ -186,7 +186,7 @@ export function Settings() {
     setFpLoading(true);
     setFpError(null);
     try {
-      const res = await fetch('/api/worker/verify-otp', {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/worker/verify-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: profile.email, code: fpOtp, purpose: 'forgot_password' })
@@ -211,7 +211,7 @@ export function Settings() {
     setFpLoading(true);
     setFpError(null);
     try {
-      const res = await fetch('/api/worker/reset-password', {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/worker/reset-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: profile.email, code: fpOtp, newPassword: fpNewPassword })
@@ -236,7 +236,7 @@ export function Settings() {
   const handleDeleteAccount = async () => {
     const workerId = localStorage.getItem("workerId");
     try {
-      const response = await fetch(`/api/worker/account/${workerId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/worker/account/${workerId}`, {
         method: "DELETE"
       });
 

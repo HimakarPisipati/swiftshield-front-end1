@@ -14,12 +14,12 @@ export function Claims() {
     const workerId = localStorage.getItem('workerId') || '11111111-1111-1111-1111-111111111111';
 
     // Fetch profile to get real UPI ID
-    fetch(`/api/worker/profile/${workerId}`)
+    fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/worker/profile/${workerId}`)
       .then(res => res.json())
       .then(d => { if (d.success) setUpiId(d.worker.upi_id || null); })
       .catch(() => {});
 
-    fetch(`/api/engine/stats/${workerId}`)
+    fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/engine/stats/${workerId}`)
       .then(res => res.json())
       .then(d => {
         if (d.recentPayouts) {

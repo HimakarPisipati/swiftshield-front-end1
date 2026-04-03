@@ -15,7 +15,7 @@ export function Login() {
     setError(null);
 
     try {
-      const response = await fetch("/api/worker/login", {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/worker/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

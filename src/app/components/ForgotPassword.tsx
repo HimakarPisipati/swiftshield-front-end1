@@ -31,7 +31,7 @@ export default function ForgotPassword() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch('/api/worker/send-otp', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/worker/send-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, purpose: 'forgot_password' })
@@ -55,7 +55,7 @@ export default function ForgotPassword() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch('/api/worker/verify-otp', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/worker/verify-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, code: otp, purpose: 'forgot_password' })
@@ -87,7 +87,7 @@ export default function ForgotPassword() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch('/api/worker/reset-password', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/worker/reset-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, code: otp, newPassword })

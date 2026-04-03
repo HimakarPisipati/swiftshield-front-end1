@@ -9,7 +9,7 @@ export function DemoSimulationPanel({ onEventTriggered }: { onEventTriggered: ()
     setLoading(name);
     try {
       const workerId = localStorage.getItem('workerId') || '11111111-1111-1111-1111-111111111111';
-      const response = await fetch('http://localhost:3000/api/engine/simulate', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}/api/engine/simulate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
