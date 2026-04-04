@@ -194,7 +194,8 @@ export function SubmitClaim() {
             <div className="space-y-5 mb-8">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Description <span className="text-gray-400 font-normal">(optional)</span>
+                  Description 
+                  
                 </label>
                 <textarea
                   value={description}
