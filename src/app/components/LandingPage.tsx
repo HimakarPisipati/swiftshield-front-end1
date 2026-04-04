@@ -87,7 +87,7 @@ export function LandingPage() {
           </div>
 
           <div className="flex items-center gap-4">
-            <button 
+            <button
               onClick={scrollToPricing}
               className="text-gray-700 hover:text-[#1E3A8A] transition-colors cursor-pointer font-medium"
             >
@@ -112,7 +112,7 @@ export function LandingPage() {
                 Smart parametric coverage for delivery partners against weather, cancellations, and disruptions
               </p>
               <div className="flex gap-4">
-                <Link 
+                <Link
                   to="/onboarding"
                   className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-xl text-blue-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg transition-transform hover:scale-105"
                 >
@@ -209,9 +209,8 @@ export function LandingPage() {
             {plans.map((plan, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-2xl p-8 border-2 ${
-                  plan.popular ? "border-[#F97316] shadow-xl scale-105" : "border-gray-200"
-                } relative hover:shadow-lg transition-all`}
+                className={`bg-white rounded-2xl p-8 border-2 ${plan.popular ? "border-[#F97316] shadow-xl scale-105" : "border-gray-200"
+                  } relative hover:shadow-lg transition-all`}
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -256,11 +255,10 @@ export function LandingPage() {
 
                 <Link
                   to="/onboarding"
-                  className={`block w-full py-3 rounded-xl text-center font-semibold transition-colors ${
-                    plan.popular
+                  className={`block w-full py-3 rounded-xl text-center font-semibold transition-colors ${plan.popular
                       ? "bg-[#F97316] text-white hover:bg-[#F97316]/90"
                       : "bg-[#1E3A8A] text-white hover:bg-[#1E3A8A]/90"
-                  }`}
+                    }`}
                 >
                   Get Started
                 </Link>
@@ -290,8 +288,8 @@ export function LandingPage() {
               <h4 className="font-semibold mb-4">Product</h4>
               <ul className="space-y-2 text-sm text-blue-200">
                 <li>
-                  <button 
-                    onClick={scrollToPricing} 
+                  <button
+                    onClick={scrollToPricing}
                     className="hover:text-white transition-colors cursor-pointer"
                   >
                     Pricing
@@ -305,7 +303,7 @@ export function LandingPage() {
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-sm text-blue-200">
-                <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
+                <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
                 <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Privacy</a></li>
               </ul>
