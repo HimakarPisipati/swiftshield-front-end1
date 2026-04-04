@@ -208,7 +208,7 @@ export function SubmitClaim() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Location <span className="text-gray-400 font-normal">(optional)</span>
+                  Location 
                 </label>
                 <input
                   type="text"
@@ -221,7 +221,7 @@ export function SubmitClaim() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Incident Date & Time <span className="text-gray-400 font-normal">(optional)</span>
+                  Incident Date & Time 
                 </label>
                 <input
                   type="datetime-local"
