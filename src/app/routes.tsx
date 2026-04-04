@@ -12,6 +12,7 @@ import { Login } from "./components/Login";
 
 import { Settings } from "./components/Settings";
 import ForgotPassword from "./components/ForgotPassword";
+import { About } from "./components/About";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
       { path: "submit-claim", Component: SubmitClaim },
       { path: "settings", Component: Settings },
       { path: "forgot-password", Component: ForgotPassword },
+      { path: "about", Component: About },
     ],
   },
 ]);

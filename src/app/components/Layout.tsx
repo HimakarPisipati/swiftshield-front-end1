@@ -32,7 +32,8 @@ export function Layout() {
     location.pathname.startsWith("/insights") ||
     location.pathname.startsWith("/admin") ||
     location.pathname.startsWith("/submit-claim") ||
-    location.pathname.startsWith("/settings");
+    location.pathname.startsWith("/settings") ||
+    location.pathname.startsWith("/about");
 
   useEffect(() => {
     const workerId = localStorage.getItem('workerId');
@@ -78,7 +79,7 @@ export function Layout() {
       {!isLanding && (
         <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
           <div className="px-6 py-4 flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2 group">
+            <Link to="/about" className="flex items-center gap-2 group">
               <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 shadow-sm overflow-hidden border border-gray-100">
                 <img src="/favicon.png" alt="SwiftShield Logo" className="w-8 h-8 object-contain" />
               </div>
@@ -234,8 +235,8 @@ export function Layout() {
                     key={item.path}
                     to={item.path}
                     className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group ${isActive
-                        ? "bg-[#1E3A8A] text-white shadow-md shadow-blue-900/20"
-                        : "text-gray-600 hover:bg-gray-50 hover:text-[#1E3A8A]"
+                      ? "bg-[#1E3A8A] text-white shadow-md shadow-blue-900/20"
+                      : "text-gray-600 hover:bg-gray-50 hover:text-[#1E3A8A]"
                       }`}
                   >
                     <item.icon className={`w-5 h-5 transition-transform group-hover:scale-110 ${isActive ? 'text-white' : 'text-gray-400 group-hover:text-[#1E3A8A]'}`} />
