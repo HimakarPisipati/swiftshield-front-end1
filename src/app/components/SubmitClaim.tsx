@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import {
   CloudRain, XCircle, MapPin, FileText,
   ChevronRight, ChevronLeft, CheckCircle,
-  Loader2, Shield, ArrowRight
+  Loader2, Shield, ArrowRight, AlertCircle
 } from "lucide-react";
 
 const WORKER_ID = localStorage.getItem('workerId') || '11111111-1111-1111-1111-111111111111';
@@ -68,8 +68,26 @@ export function SubmitClaim() {
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [validationError, setValidationError] = useState<string | null>(null);
 
   const claimType = CLAIM_TYPES.find(c => c.id === selectedType);
+
+  const handleReviewClick = () => {
+    setValidationError(null);
+    if (!description.trim()) {
+      setValidationError("Please fill in the Description field.");
+      return;
+    }
+    if (!location.trim()) {
+      setValidationError("Please fill in the Location field.");
+      return;
+    }
+    if (!incidentTime) {
+      setValidationError("Please select an Incident Date & Time.");
+      return;
+    }
+    setStep(3);
+  };
 
   const handleSubmit = async () => {
     setSubmitting(true);
@@ -189,53 +207,66 @@ export function SubmitClaim() {
               </div>
             </div>
 
-            <div className="space-y-5 mb-8">
+            <div className="space-y-5 mb-6">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Description                 </label>
+                  Description <span className="text-red-500">*</span>
+                </label>
                 <textarea
                   value={description}
-                  onChange={e => setDescription(e.target.value)}
+                  onChange={e => { setDescription(e.target.value); setValidationError(null); }}
                   placeholder="Briefly describe what happened during your shift..."
                   rows={3}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1E3A8A] resize-none text-gray-900"
+                  className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1E3A8A] resize-none text-gray-900 ${validationError && !description.trim() ? "border-red-400 bg-red-50" : "border-gray-300"
+                    }`}
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Location
+                  Location <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
                   value={location}
-                  onChange={e => setLocation(e.target.value)}
+                  onChange={e => { setLocation(e.target.value); setValidationError(null); }}
                   placeholder="e.g. Koramangala, Bangalore"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1E3A8A] text-gray-900"
+                  className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1E3A8A] text-gray-900 ${validationError && !location.trim() ? "border-red-400 bg-red-50" : "border-gray-300"
+                    }`}
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Incident Date & Time                 </label>
+                  Incident Date &amp; Time <span className="text-red-500">*</span>
+                </label>
                 <input
                   type="datetime-local"
                   value={incidentTime}
-                  onChange={e => setIncidentTime(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1E3A8A] text-gray-900"
+                  onChange={e => { setIncidentTime(e.target.value); setValidationError(null); }}
+                  className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1E3A8A] text-gray-900 ${validationError && !incidentTime ? "border-red-400 bg-red-50" : "border-gray-300"
+                    }`}
                 />
               </div>
             </div>
 
+            {/* Validation Error Banner */}
+            {validationError && (
+              <div className="flex items-center gap-2 mb-5 p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm">
+                <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                {validationError}
+              </div>
+            )}
+
             <div className="flex gap-3">
               <button
-                onClick={() => setStep(1)}
+                onClick={() => { setStep(1); setValidationError(null); }}
                 className="flex-1 py-3 border border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
               >
                 <ChevronLeft className="w-5 h-5" /> Back
               </button>
               <button
-                onClick={() => setStep(3)}
+                onClick={handleReviewClick}
                 className="flex-2 flex-1 py-3 bg-[#1E3A8A] text-white rounded-xl font-semibold hover:bg-[#1E3A8A]/90 transition-colors flex items-center justify-center gap-2"
               >
                 Review Claim <ChevronRight className="w-5 h-5" />
