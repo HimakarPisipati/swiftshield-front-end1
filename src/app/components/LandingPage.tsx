@@ -1,8 +1,9 @@
+import React from "react";
 import { Link } from "react-router";
-import { Shield, Zap, Clock, TrendingUp, CheckCircle, Cloud, XCircle, MapPin } from "lucide-react";
+import { Shield, Zap, TrendingUp, CheckCircle, Cloud, XCircle, MapPin } from "lucide-react";
 
 export function LandingPage() {
-  const scrollToPricing = (e: React.MouseEvent) => {
+  const scrollToPricing = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' });
   };
