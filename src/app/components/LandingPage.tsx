@@ -256,8 +256,8 @@ export function LandingPage() {
                 <Link
                   to="/onboarding"
                   className={`block w-full py-3 rounded-xl text-center font-semibold transition-colors ${plan.popular
-                      ? "bg-[#F97316] text-white hover:bg-[#F97316]/90"
-                      : "bg-[#1E3A8A] text-white hover:bg-[#1E3A8A]/90"
+                    ? "bg-[#F97316] text-white hover:bg-[#F97316]/90"
+                    : "bg-[#1E3A8A] text-white hover:bg-[#1E3A8A]/90"
                     }`}
                 >
                   Get Started
