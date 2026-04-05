@@ -201,7 +201,7 @@ export function LandingPage() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing-section" className="py-20 bg-white">
+      <section id="pricing-section" className="py-20 bg-gradient-to-br from-indigo-50 via-blue-50 to-teal-50">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-center mb-4 text-gray-900">Choose Your Protection Plan</h2>
           <p className="text-center text-gray-600 mb-12">Flexible coverage for every delivery partner</p>
@@ -210,8 +210,13 @@ export function LandingPage() {
             {plans.map((plan, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-2xl p-8 border-2 ${plan.popular ? "border-[#F97316] shadow-xl scale-105" : "border-gray-200"
-                  } relative hover:shadow-lg transition-all`}
+                className={`rounded-2xl p-8 border-2 relative hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out ${
+                  plan.popular ? "border-[#F97316] shadow-xl scale-105 hover:scale-110" : "border-gray-200 hover:border-blue-300"
+                } ${
+                  plan.name === 'Basic' ? 'bg-gradient-to-br from-blue-50 via-white to-blue-100' :
+                  plan.name === 'Standard' ? 'bg-gradient-to-br from-orange-50 via-white to-orange-100' :
+                  'bg-gradient-to-br from-teal-50 via-white to-teal-100'
+                }`}
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
