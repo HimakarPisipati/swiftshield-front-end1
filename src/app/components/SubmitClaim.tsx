@@ -76,11 +76,7 @@ export function SubmitClaim() {
     setError(null);
     const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
     console.log("📝 [DEBUG] Submitting Claim using URL:", apiUrl);
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> cb8413c4c175dbe46008f403416f1fc5ef6e4a07
     try {
       const res = await fetch(`${apiUrl}/api/engine/claim`, {
         method: "POST",
@@ -123,22 +119,13 @@ export function SubmitClaim() {
           <div className="flex items-center gap-2 mb-8">
             {steps.slice(0, 3).map((label, i) => (
               <div key={i} className="flex items-center gap-2 flex-1">
-<<<<<<< HEAD
-                <div className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold transition-all ${step > i + 1
-                    ? "bg-[#14B8A6] text-white"
-                    : step === i + 1
-                      ? "bg-[#1E3A8A] text-white"
-                      : "bg-gray-200 text-gray-500"
-                  }`}>
-=======
                 <div className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold transition-all ${
                   step > i + 1
                     ? "bg-[#14B8A6] text-white"
                     : step === i + 1
-                    ? "bg-[#1E3A8A] text-white"
-                    : "bg-gray-200 text-gray-500"
+                      ? "bg-[#1E3A8A] text-white"
+                      : "bg-gray-200 text-gray-500"
                 }`}>
->>>>>>> cb8413c4c175dbe46008f403416f1fc5ef6e4a07
                   {step > i + 1 ? <CheckCircle className="w-4 h-4" /> : i + 1}
                 </div>
                 <span className={`text-sm font-medium hidden sm:block ${step === i + 1 ? "text-[#1E3A8A]" : "text-gray-400"}`}>
@@ -163,18 +150,11 @@ export function SubmitClaim() {
                   <button
                     key={type.id}
                     onClick={() => setSelectedType(type.id)}
-<<<<<<< HEAD
-                    className={`w-full text-left p-5 rounded-xl border-2 transition-all hover:shadow-md ${isSelected
-                        ? `${type.selectedBorder} ${type.selectedBg} shadow-md`
-                        : `${type.border} bg-white hover:${type.selectedBg}`
-                      }`}
-=======
                     className={`w-full text-left p-5 rounded-xl border-2 transition-all hover:shadow-md ${
                       isSelected
                         ? `${type.selectedBorder} ${type.selectedBg} shadow-md`
                         : `${type.border} bg-white hover:${type.selectedBg}`
                     }`}
->>>>>>> cb8413c4c175dbe46008f403416f1fc5ef6e4a07
                   >
                     <div className={`w-10 h-10 rounded-lg ${type.bg} flex items-center justify-center mb-3`}>
                       <Icon className={`w-5 h-5 ${type.color}`} />
@@ -214,13 +194,8 @@ export function SubmitClaim() {
             <div className="space-y-5 mb-8">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-<<<<<<< HEAD
-                  Description                 </label>
-=======
-                  Description 
-                  
+                  Description
                 </label>
->>>>>>> cb8413c4c175dbe46008f403416f1fc5ef6e4a07
                 <textarea
                   value={description}
                   onChange={e => setDescription(e.target.value)}
@@ -232,11 +207,7 @@ export function SubmitClaim() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-<<<<<<< HEAD
                   Location
-=======
-                  Location 
->>>>>>> cb8413c4c175dbe46008f403416f1fc5ef6e4a07
                 </label>
                 <input
                   type="text"
@@ -249,12 +220,8 @@ export function SubmitClaim() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
-<<<<<<< HEAD
-                  Incident Date & Time                 </label>
-=======
-                  Incident Date & Time 
+                  Incident Date & Time
                 </label>
->>>>>>> cb8413c4c175dbe46008f403416f1fc5ef6e4a07
                 <input
                   type="datetime-local"
                   value={incidentTime}

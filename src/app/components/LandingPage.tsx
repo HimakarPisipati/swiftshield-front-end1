@@ -305,8 +305,6 @@ export function LandingPage() {
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-sm text-blue-200">
                 <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Privacy</a></li>
               </ul>
             </div>
 
